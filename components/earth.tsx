@@ -59,8 +59,8 @@ export default function Earth(props: EarthProps): JSX.Element {
 
     const spring4 = useSpring({
         loop: true,
-        to: [{ r: 150 }, { r: 142 }, { r: 147 }, { r: 140 }, { r: 150 }],
-        from: { r: 150 },
+        to: [{ r: 145 }, { r: 142 }, { r: 147 }, { r: 140 }, { r: 145 }],
+        from: { r: 145 },
         config: {
             mass: 5,
             tension: 1,
