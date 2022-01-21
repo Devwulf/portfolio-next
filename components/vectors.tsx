@@ -269,3 +269,17 @@ export const moonShade2 = {
     ),
     viewBox: "0 0 1000 1000"
 };
+
+export const playerShip = {
+    shape: (
+        <path
+            d="M156.751,156.591L100.311,137.146L43.249,156.805L100.054,43.195L156.751,156.591Z"
+            style={{
+                fill: "rgb(63,102,198)",
+                stroke: "rgb(21,21,54)",
+                strokeWidth: "11.58px"
+            }}
+        />
+    ),
+    viewBox: "0 0 200 200"
+};

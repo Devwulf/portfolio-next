@@ -1,6 +1,5 @@
 import { ParallaxLayer } from "@react-spring/parallax";
 import { useEffect, useState } from "react";
-import { useChain, useSpring, useSpringRef, useTrail } from "react-spring";
 import styles from "../styles/Hero.module.css";
 import Earth from "./earth";
 import Moon from "./moon";
