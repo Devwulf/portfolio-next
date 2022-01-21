@@ -1,10 +1,4 @@
-import {
-    animated,
-    config,
-    useSpring,
-    useSprings,
-    useTransition
-} from "react-spring";
+import { animated, useSpring } from "react-spring";
 import { cloud1, cloud2, cloud3, earth } from "./vectors";
 
 type EarthProps = {

@@ -1,15 +1,39 @@
 import { ParallaxLayer } from "@react-spring/parallax";
+import { useEffect, useState } from "react";
+import { useChain, useSpring, useSpringRef, useTrail } from "react-spring";
 import styles from "../styles/Hero.module.css";
 import Earth from "./earth";
+import Moon from "./moon";
 
 export default function Hero(): JSX.Element {
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    useEffect(() => {
+        setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", () => {
+            setWindowWidth(window.innerWidth);
+        });
+    }, []);
     return (
         <>
             <ParallaxLayer
                 offset={0}
-                speed={3.5}
+                speed={0.5}
                 style={{
-                    position: "relative",
+                    width: "100%"
+                }}
+            >
+                <Moon
+                    top="20%"
+                    width="6rem"
+                    shade="small"
+                    windowWidth={windowWidth}
+                />
+            </ParallaxLayer>
+            <ParallaxLayer
+                offset={0}
+                speed={1.0}
+                style={{
                     width: "100%"
                 }}
             >
@@ -17,7 +41,7 @@ export default function Hero(): JSX.Element {
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={2.5}
+                speed={2.25}
                 style={{
                     display: "flex",
                     justifyContent: "center",
@@ -42,6 +66,20 @@ export default function Hero(): JSX.Element {
                         Core, Python.
                     </p>
                 </div>
+            </ParallaxLayer>
+            <ParallaxLayer
+                offset={0}
+                speed={2.75}
+                style={{
+                    width: "100%"
+                }}
+            >
+                <Moon
+                    top="45%"
+                    width="48rem"
+                    shade="large"
+                    windowWidth={windowWidth}
+                />
             </ParallaxLayer>
         </>
     );
