@@ -21,7 +21,13 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Parallax pages={2}>
+            <Parallax
+                pages={4}
+                innerStyle={{
+                    backgroundImage: "url(/starfield.png)",
+                    backgroundAttachment: "scroll"
+                }}
+            >
                 <Hero />
             </Parallax>
 
