@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { animated, easings, useSpring } from "react-spring";
 import { star } from "./vectors";
+import styles from "../styles/Star.module.css";
 
 type StarProps = {
     windowWidth: number;
@@ -25,6 +26,7 @@ export default function Star(props: StarProps): JSX.Element | null {
         color = "rgb(234,222,86)"
     } = props;
 
+    /*
     const translate = -100 * haloScale + 150;
     const haloSpring = useSpring({
         loop: true,
@@ -39,6 +41,7 @@ export default function Star(props: StarProps): JSX.Element | null {
             duration
         }
     });
+    */
 
     const twirlZSpring = useSpring({
         rotateZ: "0deg",
@@ -102,13 +105,13 @@ export default function Star(props: StarProps): JSX.Element | null {
                         <feGaussianBlur in="SourceGraphic" stdDeviation={20} />
                     </filter>
                 </defs>
-                <animated.g transform={haloSpring.transform}>
+                <g className={styles.halo}>
                     <animated.path
                         d={star.path}
                         fill={color}
                         filter="url(#starHalo)"
                     />
-                </animated.g>
+                </g>
                 <g transform="translate(50, 50)">{star.shape}</g>
             </svg>
         </animated.div>

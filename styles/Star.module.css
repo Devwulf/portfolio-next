@@ -2,7 +2,6 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    pointer-events: none;
 }
 
 .bobSmall {
@@ -19,6 +18,21 @@
 
     to {
         transform: translateY(30px);
+    }
+}
+
+.bobSmall .halo {
+    animation: bobsmallhalo 4s ease-in-out infinite alternate;
+}
+
+/* translate = -100 * scale + 150 */
+@keyframes bobsmallhalo {
+    from {
+        transform: translate(60px, 60px) scale(0.9);
+    }
+
+    to {
+        transform: translate(40px, 40px) scale(1.1);
     }
 }
 
@@ -39,6 +53,20 @@
     }
 }
 
+.bobMedium .halo {
+    animation: bobmediumhalo 3s ease-in-out infinite alternate;
+}
+
+@keyframes bobmediumhalo {
+    from {
+        transform: translate(60px, 60px) scale(0.9);
+    }
+
+    to {
+        transform: translate(30px, 30px) scale(1.2);
+    }
+}
+
 .bobLarge {
     animation: boblarge 9s ease-in-out infinite alternate;
     position: relative;
@@ -53,5 +81,19 @@
 
     to {
         transform: translateY(90px);
+    }
+}
+
+.bobLarge .halo {
+    animation: boblargehalo 2s ease-in-out infinite alternate;
+}
+
+@keyframes boblargehalo {
+    from {
+        transform: translate(60px, 60px) scale(0.9);
+    }
+
+    to {
+        transform: translate(20px, 20px) scale(1.3);
     }
 }

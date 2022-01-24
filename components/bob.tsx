@@ -1,4 +1,4 @@
-import styles from "../styles/Bob.module.css";
+import styles from "../styles/Star.module.css";
 
 type BobProps = {
     children?: React.ReactNode;

@@ -23,7 +23,8 @@ export default function Hero(): JSX.Element {
                 offset={0}
                 speed={0.25}
                 style={{
-                    width: "100%"
+                    width: "100%",
+                    pointerEvents: "none"
                 }}
             >
                 <BobSmall>
@@ -61,7 +62,8 @@ export default function Hero(): JSX.Element {
                 offset={0}
                 speed={0.5}
                 style={{
-                    width: "100%"
+                    width: "100%",
+                    pointerEvents: "none"
                 }}
             >
                 <BobMedium>
@@ -106,7 +108,8 @@ export default function Hero(): JSX.Element {
                 offset={0}
                 speed={0.75}
                 style={{
-                    width: "100%"
+                    width: "100%",
+                    pointerEvents: "none"
                 }}
             >
                 <BobLarge>
