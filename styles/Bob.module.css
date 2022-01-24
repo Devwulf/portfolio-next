@@ -1,0 +1,57 @@
+.bobContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.bobSmall {
+    animation: bobsmall 3s ease-in-out infinite alternate;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes bobsmall {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(30px);
+    }
+}
+
+.bobMedium {
+    animation: bobmedium 6s ease-in-out infinite alternate;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes bobmedium {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(60px);
+    }
+}
+
+.bobLarge {
+    animation: boblarge 9s ease-in-out infinite alternate;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes boblarge {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(90px);
+    }
+}

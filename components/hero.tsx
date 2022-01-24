@@ -6,6 +6,7 @@ import Moon from "./moon";
 import Star from "./star";
 import starfield from "../assets/starfield.png";
 import Image from "next/image";
+import { BobLarge, BobMedium, BobSmall } from "./bob";
 
 export default function Hero(): JSX.Element {
     const [windowWidth, setWindowWidth] = useState(0);
@@ -25,133 +26,133 @@ export default function Hero(): JSX.Element {
                     width: "100%"
                 }}
             >
-                <Star
-                    windowWidth={windowWidth}
-                    cullUnderWindowWidth={600}
-                    top="34%"
-                    left="10%"
-                    width="3rem"
-                    color="#71c7b6"
-                    duration={1000}
-                    haloScale={1.3}
-                    bobLength={40}
-                    bobDuration={5000}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    top="10%"
-                    left="17%"
-                    width="4rem"
-                    haloScale={1.2}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    cullUnderWindowWidth={600}
-                    top="24%"
-                    left="28%"
-                    width="5rem"
-                    color="#f58464"
-                    duration={4000}
-                    haloScale={1.1}
-                    bobLength={25}
-                    bobDuration={3000}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    top="30%"
-                    left="50%"
-                    width="2rem"
-                    color="#c7f0ff"
-                    duration={1000}
-                    haloScale={1.25}
-                    bobLength={50}
-                    bobDuration={6000}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    top="12%"
-                    left="60%"
-                    width="6rem"
-                    color="#ad2109"
-                    duration={4000}
-                    haloScale={1.1}
-                    bobLength={17}
-                    bobDuration={4000}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    cullUnderWindowWidth={600}
-                    top="6%"
-                    left="80%"
-                    width="4rem"
-                    color="#ebbb2a"
-                    duration={3000}
-                    haloScale={1.1}
-                    bobLength={27}
-                    bobDuration={3000}
-                />
-
-                {/* Bottom */}
-                <Star
-                    windowWidth={windowWidth}
-                    top="74%"
-                    left="6%"
-                    width="3rem"
-                    color="#71c7b6"
-                    duration={1000}
-                    haloScale={1.3}
-                    bobLength={40}
-                    bobDuration={4500}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    cullUnderWindowWidth={600}
-                    top="85%"
-                    left="22%"
-                    width="4rem"
-                    haloScale={1.2}
-                    bobLength={32}
-                    bobDuration={3200}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    top="64%"
-                    left="47%"
-                    width="5rem"
-                    color="#f58464"
-                    duration={4000}
-                    haloScale={1.1}
-                    bobLength={21}
-                    bobDuration={2800}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    cullUnderWindowWidth={600}
-                    top="80%"
-                    left="85%"
-                    width="2rem"
-                    color="#c7f0ff"
-                    duration={1000}
-                    haloScale={1.25}
-                    bobLength={42}
-                    bobDuration={5200}
-                />
-                <Star
-                    windowWidth={windowWidth}
-                    cullUnderWindowWidth={600}
-                    top="76%"
-                    left="90%"
-                    width="4rem"
-                    color="#ebbb2a"
-                    duration={3000}
-                    haloScale={1.1}
-                    bobLength={29}
-                    bobDuration={3600}
-                />
+                <BobSmall>
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
+                        top="24%"
+                        left="28%"
+                        width="5rem"
+                        color="#f58464"
+                        duration={4000}
+                        haloScale={1.1}
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        top="12%"
+                        left="60%"
+                        width="6rem"
+                        color="#ad2109"
+                        duration={4000}
+                        haloScale={1.1}
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        top="66%"
+                        left="47%"
+                        width="5rem"
+                        color="#f58464"
+                        duration={4000}
+                        haloScale={1.1}
+                    />
+                </BobSmall>
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
                 speed={0.5}
+                style={{
+                    width: "100%"
+                }}
+            >
+                <BobMedium>
+                    <Star
+                        windowWidth={windowWidth}
+                        top="10%"
+                        left="17%"
+                        width="4rem"
+                        haloScale={1.2}
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
+                        top="6%"
+                        left="80%"
+                        width="4rem"
+                        color="#ebbb2a"
+                        duration={3000}
+                        haloScale={1.1}
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
+                        top="85%"
+                        left="22%"
+                        width="4rem"
+                        haloScale={1.2}
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
+                        top="76%"
+                        left="90%"
+                        width="4rem"
+                        color="#ebbb2a"
+                        duration={3000}
+                        haloScale={1.1}
+                    />
+                </BobMedium>
+            </ParallaxLayer>
+            <ParallaxLayer
+                offset={0}
+                speed={0.75}
+                style={{
+                    width: "100%"
+                }}
+            >
+                <BobLarge>
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
+                        top="34%"
+                        left="10%"
+                        width="3rem"
+                        color="#71c7b6"
+                        duration={1000}
+                        haloScale={1.3}
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        top="30%"
+                        left="50%"
+                        width="2rem"
+                        color="#c7f0ff"
+                        duration={1000}
+                        haloScale={1.25}
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        top="74%"
+                        left="6%"
+                        width="3rem"
+                        color="#71c7b6"
+                        duration={1000}
+                        haloScale={1.3}
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
+                        top="80%"
+                        left="85%"
+                        width="2rem"
+                        color="#c7f0ff"
+                        duration={1000}
+                        haloScale={1.25}
+                    />
+                </BobLarge>
+            </ParallaxLayer>
+            <ParallaxLayer
+                offset={0}
+                speed={1}
                 style={{
                     width: "100%",
                     pointerEvents: "none"
@@ -166,7 +167,7 @@ export default function Hero(): JSX.Element {
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={1.0}
+                speed={2.0}
                 style={{
                     width: "100%",
                     pointerEvents: "none"
@@ -176,7 +177,7 @@ export default function Hero(): JSX.Element {
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={2.25}
+                speed={3.25}
                 style={{
                     display: "flex",
                     justifyContent: "center",
@@ -205,7 +206,7 @@ export default function Hero(): JSX.Element {
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={2.75}
+                speed={5}
                 style={{
                     width: "100%",
                     pointerEvents: "none"

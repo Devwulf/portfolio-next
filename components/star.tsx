@@ -11,8 +11,6 @@ type StarProps = {
     haloScale?: number;
     duration?: number;
     color?: string;
-    bobLength?: number;
-    bobDuration?: number;
 };
 
 export default function Star(props: StarProps): JSX.Element | null {
@@ -24,9 +22,7 @@ export default function Star(props: StarProps): JSX.Element | null {
         width = "15rem",
         haloScale = 1.25,
         duration = 5000,
-        color = "rgb(234,222,86)",
-        bobLength = 20,
-        bobDuration = 2500
+        color = "rgb(234,222,86)"
     } = props;
 
     const translate = -100 * haloScale + 150;
@@ -41,21 +37,6 @@ export default function Star(props: StarProps): JSX.Element | null {
         ],
         config: {
             duration
-        }
-    });
-
-    const bobSpring = useSpring({
-        loop: true,
-        from: { top: `calc(${top} + 0px)` },
-        to: [
-            {
-                top: `calc(${top} + ${bobLength}px)`
-            },
-            { top: `calc(${top} + 0px)` }
-        ],
-        config: {
-            duration: bobDuration,
-            easing: easings.easeInOutSine
         }
     });
 
@@ -81,16 +62,16 @@ export default function Star(props: StarProps): JSX.Element | null {
         <animated.div
             style={{
                 position: "absolute",
-                top: bobSpring.top,
+                top,
                 left,
                 width,
                 zIndex: -10,
                 rotateZ: twirlZSpring.rotateZ,
                 rotateY: twirlYSpring.rotateY,
-                cursor: "pointer"
+                cursor: "pointer",
+                pointerEvents: "all"
             }}
             onClick={() => {
-                console.log("clicked");
                 const rand = Math.random();
                 if (rand > 0.5)
                     twirlZSpring.rotateZ.start({
