@@ -1,0 +1,47 @@
+@keyframes cloud {
+    from {
+        transform: translateX(-200px);
+    }
+
+    to {
+        transform: translateX(400px);
+    }
+}
+
+.cloudSmall {
+    animation: cloud 4s linear infinite normal;
+}
+
+.cloudSmallY {
+    transform: translateY(200px);
+}
+
+.cloudMedium {
+    animation: cloud 6s linear infinite normal;
+}
+
+.cloudMediumY {
+    transform: translateY(80px);
+}
+
+.cloudLarge {
+    animation: cloud 8s linear infinite normal;
+}
+
+.cloudLargeY {
+    transform: translateY(250px);
+}
+
+.halo {
+    animation: halo 5s ease-in-out infinite alternate;
+}
+
+@keyframes halo {
+    from {
+        r: 140px;
+    }
+
+    to {
+        r: 147px;
+    }
+}

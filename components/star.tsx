@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { animated, easings, useSpring } from "react-spring";
 import { star } from "./vectors";
 import styles from "../styles/Star.module.css";
@@ -25,23 +24,6 @@ export default function Star(props: StarProps): JSX.Element | null {
         duration = 5000,
         color = "rgb(234,222,86)"
     } = props;
-
-    /*
-    const translate = -100 * haloScale + 150;
-    const haloSpring = useSpring({
-        loop: true,
-        from: { transform: "translate(60, 60) scale(0.9)" },
-        to: [
-            {
-                transform: `translate(${translate}, ${translate}) scale(${haloScale})`
-            },
-            { transform: "translate(60, 60) scale(0.9)" }
-        ],
-        config: {
-            duration
-        }
-    });
-    */
 
     const twirlZSpring = useSpring({
         rotateZ: "0deg",
