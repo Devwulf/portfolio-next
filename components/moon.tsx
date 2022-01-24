@@ -1,12 +1,6 @@
-import { animated, SpringRef, useSpring, useSpringRef } from "react-spring";
-import {
-    cloud1,
-    cloud2,
-    cloud3,
-    moon,
-    moonShade1,
-    moonShade2
-} from "./vectors";
+import { animated, useSpring } from "react-spring";
+import { moon, moonShade1, moonShade2 } from "./vectors";
+import styles from "../styles/Moon.module.css";
 
 type MoonProps = {
     top?: string;
@@ -29,19 +23,6 @@ export default function Moon(props: MoonProps): JSX.Element {
             duration: 16 * windowWidth + 7200
         }
     });
-    const spring4 = useSpring({
-        loop: true,
-        to: [{ r: 375 }, { r: 372 }, { r: 377 }, { r: 370 }, { r: 375 }],
-        from: { r: 375 },
-        config: {
-            mass: 5,
-            tension: 1,
-            friction: 1,
-            clamp: true,
-            precision: 0.001,
-            velocity: 0.002
-        }
-    });
 
     return (
         <animated.svg
@@ -59,10 +40,10 @@ export default function Moon(props: MoonProps): JSX.Element {
                     <feGaussianBlur in="SourceGraphic" stdDeviation={15} />
                 </filter>
             </defs>
-            <animated.circle
+            <circle
+                className={styles.halo}
                 cx={500}
                 cy={500}
-                r={spring4.r}
                 fill="#FFFFFF"
                 filter="url(#halo)"
             />

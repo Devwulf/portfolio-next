@@ -1,0 +1,13 @@
+.halo {
+    animation: halo 5s ease-in-out infinite alternate;
+}
+
+@keyframes halo {
+    from {
+        r: 370px;
+    }
+
+    to {
+        r: 380px;
+    }
+}
