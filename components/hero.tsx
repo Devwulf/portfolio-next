@@ -4,24 +4,19 @@ import styles from "../styles/Hero.module.css";
 import Earth from "./earth";
 import Moon from "./moon";
 import Star from "./star";
-import starfield from "../assets/starfield.png";
-import Image from "next/image";
 import { BobLarge, BobMedium, BobSmall } from "./bob";
 
-export default function Hero(): JSX.Element {
-    const [windowWidth, setWindowWidth] = useState(0);
+type HeroProps = {
+    windowWidth: number;
+};
 
-    useEffect(() => {
-        setWindowWidth(window.innerWidth);
-        window.addEventListener("resize", () => {
-            setWindowWidth(window.innerWidth);
-        });
-    }, []);
+export default function Hero(props: HeroProps): JSX.Element {
+    const { windowWidth } = props;
     return (
         <>
             <ParallaxLayer
                 offset={0}
-                speed={0.25}
+                speed={0.1}
                 style={{
                     width: "100%",
                     pointerEvents: "none"
@@ -35,8 +30,6 @@ export default function Hero(): JSX.Element {
                         left="28%"
                         width="5rem"
                         color="#f58464"
-                        duration={4000}
-                        haloScale={1.1}
                     />
                     <Star
                         windowWidth={windowWidth}
@@ -44,8 +37,6 @@ export default function Hero(): JSX.Element {
                         left="60%"
                         width="6rem"
                         color="#ad2109"
-                        duration={4000}
-                        haloScale={1.1}
                     />
                     <Star
                         windowWidth={windowWidth}
@@ -53,14 +44,12 @@ export default function Hero(): JSX.Element {
                         left="47%"
                         width="5rem"
                         color="#f58464"
-                        duration={4000}
-                        haloScale={1.1}
                     />
                 </BobSmall>
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={0.5}
+                speed={0.2}
                 style={{
                     width: "100%",
                     pointerEvents: "none"
@@ -72,7 +61,6 @@ export default function Hero(): JSX.Element {
                         top="10%"
                         left="17%"
                         width="4rem"
-                        haloScale={1.2}
                     />
                     <Star
                         windowWidth={windowWidth}
@@ -81,8 +69,6 @@ export default function Hero(): JSX.Element {
                         left="80%"
                         width="4rem"
                         color="#ebbb2a"
-                        duration={3000}
-                        haloScale={1.1}
                     />
                     <Star
                         windowWidth={windowWidth}
@@ -90,7 +76,6 @@ export default function Hero(): JSX.Element {
                         top="85%"
                         left="22%"
                         width="4rem"
-                        haloScale={1.2}
                     />
                     <Star
                         windowWidth={windowWidth}
@@ -99,14 +84,12 @@ export default function Hero(): JSX.Element {
                         left="90%"
                         width="4rem"
                         color="#ebbb2a"
-                        duration={3000}
-                        haloScale={1.1}
                     />
                 </BobMedium>
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={0.75}
+                speed={0.3}
                 style={{
                     width: "100%",
                     pointerEvents: "none"
@@ -120,8 +103,6 @@ export default function Hero(): JSX.Element {
                         left="10%"
                         width="3rem"
                         color="#71c7b6"
-                        duration={1000}
-                        haloScale={1.3}
                     />
                     <Star
                         windowWidth={windowWidth}
@@ -129,8 +110,6 @@ export default function Hero(): JSX.Element {
                         left="50%"
                         width="2rem"
                         color="#c7f0ff"
-                        duration={1000}
-                        haloScale={1.25}
                     />
                     <Star
                         windowWidth={windowWidth}
@@ -138,8 +117,6 @@ export default function Hero(): JSX.Element {
                         left="6%"
                         width="3rem"
                         color="#71c7b6"
-                        duration={1000}
-                        haloScale={1.3}
                     />
                     <Star
                         windowWidth={windowWidth}
@@ -148,14 +125,12 @@ export default function Hero(): JSX.Element {
                         left="85%"
                         width="2rem"
                         color="#c7f0ff"
-                        duration={1000}
-                        haloScale={1.25}
                     />
                 </BobLarge>
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={1}
+                speed={0.6}
                 style={{
                     width: "100%",
                     pointerEvents: "none"
@@ -170,7 +145,7 @@ export default function Hero(): JSX.Element {
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={2.0}
+                speed={1}
                 style={{
                     width: "100%",
                     pointerEvents: "none"
@@ -180,7 +155,7 @@ export default function Hero(): JSX.Element {
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={3.25}
+                speed={1.2}
                 style={{
                     display: "flex",
                     justifyContent: "center",
@@ -209,7 +184,7 @@ export default function Hero(): JSX.Element {
             </ParallaxLayer>
             <ParallaxLayer
                 offset={0}
-                speed={5}
+                speed={1.6}
                 style={{
                     width: "100%",
                     pointerEvents: "none"

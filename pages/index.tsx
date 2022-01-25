@@ -5,11 +5,23 @@ import styles from "../styles/Home.module.css";
 import qs from "qs";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import Hero from "../components/hero";
+import Spaceship from "../components/spaceship";
+import { BobLarge, BobMedium, BobSmall } from "../components/bob";
+import Star from "../components/star";
+import { useEffect, useState } from "react";
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     props
 ) => {
     const { posts } = props;
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    useEffect(() => {
+        setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", () => {
+            setWindowWidth(window.innerWidth);
+        });
+    }, []);
     return (
         <div className={styles.container}>
             <Head>
@@ -28,7 +40,117 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                     backgroundAttachment: "scroll"
                 }}
             >
-                <Hero />
+                <Hero windowWidth={windowWidth} />
+
+                <ParallaxLayer
+                    offset={1}
+                    speed={0.1}
+                    style={{
+                        width: "100%",
+                        pointerEvents: "none"
+                    }}
+                >
+                    <BobSmall>
+                        <Star
+                            windowWidth={windowWidth}
+                            top="12%"
+                            left="60%"
+                            width="5rem"
+                            color="#f58464"
+                        />
+                        <Star
+                            windowWidth={windowWidth}
+                            top="74%"
+                            left="28%"
+                            width="6rem"
+                            color="#ad2109"
+                        />
+                    </BobSmall>
+                </ParallaxLayer>
+                <ParallaxLayer
+                    offset={1}
+                    speed={0.2}
+                    style={{
+                        width: "100%",
+                        pointerEvents: "none"
+                    }}
+                >
+                    <BobMedium>
+                        <Star
+                            windowWidth={windowWidth}
+                            top="10%"
+                            left="17%"
+                            width="4rem"
+                        />
+                        <Star
+                            windowWidth={windowWidth}
+                            cullUnderWindowWidth={600}
+                            top="76%"
+                            left="90%"
+                            width="4rem"
+                            color="#ebbb2a"
+                        />
+                    </BobMedium>
+                </ParallaxLayer>
+                <ParallaxLayer
+                    offset={1}
+                    speed={0.3}
+                    style={{
+                        width: "100%",
+                        pointerEvents: "none"
+                    }}
+                >
+                    <BobLarge>
+                        <Star
+                            windowWidth={windowWidth}
+                            cullUnderWindowWidth={600}
+                            top="85%"
+                            left="65%"
+                            width="3rem"
+                            color="#71c7b6"
+                        />
+                        <Star
+                            windowWidth={windowWidth}
+                            top="34%"
+                            left="10%"
+                            width="2rem"
+                            color="#c7f0ff"
+                        />
+                    </BobLarge>
+                </ParallaxLayer>
+                <ParallaxLayer
+                    offset={1}
+                    speed={0.5}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        paddingLeft: windowWidth > 600 ? "4rem" : "0rem",
+                        paddingRight: windowWidth > 600 ? "4rem" : "2rem",
+                        pointerEvents: "none"
+                    }}
+                >
+                    <div
+                        className=""
+                        style={{
+                            position: "relative",
+                            display: "flex",
+                            alignItems: "center",
+                            maxWidth: "72rem",
+                            width: "100%"
+                        }}
+                    >
+                        <Spaceship
+                            width={windowWidth > 600 ? "24rem" : "12rem"}
+                        />
+                        <div
+                            className=""
+                            style={{
+                                width: "100%",
+                                height: "100%"
+                            }}
+                        ></div>
+                    </div>
+                </ParallaxLayer>
             </Parallax>
 
             {/*

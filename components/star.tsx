@@ -8,8 +8,6 @@ type StarProps = {
     top?: string;
     left?: string;
     width?: string;
-    haloScale?: number;
-    duration?: number;
     color?: string;
 };
 
@@ -20,8 +18,6 @@ export default function Star(props: StarProps): JSX.Element | null {
         top = "32rem",
         left = "48rem",
         width = "15rem",
-        haloScale = 1.25,
-        duration = 5000,
         color = "rgb(234,222,86)"
     } = props;
 
