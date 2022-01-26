@@ -21,9 +21,13 @@ export default function Spaceship(props: SpaceshipProps): JSX.Element {
                 <g className={styles.spaceship}>
                     {spaceShip.shape}
                     <g>
-                        {spaceShip.fireSmall1Shape}
-                        {spaceShip.fireLargeShape}
-                        {spaceShip.fireSmall2Shape}
+                        <g className={styles.fireSmall}>
+                            {spaceShip.fireSmall1Shape}
+                            {spaceShip.fireSmall2Shape}
+                        </g>
+                        <g className={styles.fireLarge}>
+                            {spaceShip.fireLargeShape}
+                        </g>
                     </g>
                 </g>
             </g>
