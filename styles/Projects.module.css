@@ -1,0 +1,17 @@
+.cardsContainer {
+    width: 100%;
+    height: 80%;
+    padding-left: 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .cardsContainer {
+        padding-left: 4rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}

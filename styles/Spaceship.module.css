@@ -54,7 +54,7 @@
 
 @keyframes firelarge {
     from {
-        transform: translateY(0px) scaleY(1);
+        transform: translateY(-13.2px) scaleY(0.6);
     }
 
     to {
@@ -69,7 +69,7 @@
 
 @keyframes firesmall {
     from {
-        transform: translateY(0px) scaleY(1);
+        transform: translateY(-16.5px) scaleY(0.5);
     }
 
     to {
