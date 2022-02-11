@@ -6,6 +6,7 @@ import { Parallax } from "@react-spring/parallax";
 import Hero from "../components/hero";
 import { useEffect, useState } from "react";
 import Projects from "../components/projects";
+import About from "../components/about";
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     props
@@ -38,7 +39,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                 }}
             >
                 <Hero windowWidth={windowWidth} />
-                <Projects windowWidth={windowWidth} />
+                <Projects windowWidth={windowWidth} offset={1} />
             </Parallax>
 
             {/*

@@ -7,14 +7,16 @@ import styles from "../styles/Projects.module.css";
 
 type ProjectsProps = {
     windowWidth: number;
+    offset: number;
 };
 
 export default function Projects(props: ProjectsProps): JSX.Element {
-    const { windowWidth } = props;
+    const { windowWidth, offset } = props;
+    const newOffset = windowWidth <= 1200 ? offset + 1 : offset;
     return (
         <>
             <ParallaxLayer
-                offset={1}
+                offset={offset}
                 speed={0.1}
                 style={{
                     width: "100%",
@@ -39,7 +41,7 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                 </BobSmall>
             </ParallaxLayer>
             <ParallaxLayer
-                offset={1}
+                offset={offset}
                 speed={0.2}
                 style={{
                     width: "100%",
@@ -64,7 +66,7 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                 </BobMedium>
             </ParallaxLayer>
             <ParallaxLayer
-                offset={1}
+                offset={offset}
                 speed={0.3}
                 style={{
                     width: "100%",
@@ -89,8 +91,35 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                     />
                 </BobLarge>
             </ParallaxLayer>
+            {windowWidth <= 1200 && (
+                <ParallaxLayer
+                    offset={offset}
+                    speed={1}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        pointerEvents: "none",
+                        height: "150vh",
+                        marginTop: "-30vh"
+                    }}
+                >
+                    <div
+                        className=""
+                        style={{
+                            position: "absolute",
+                            display: "flex",
+                            maxWidth: "72rem",
+                            width: "100%",
+                            height: "100%"
+                        }}
+                    >
+                        <Spaceship width="100%" />
+                    </div>
+                </ParallaxLayer>
+            )}
             <ParallaxLayer
-                offset={1}
+                key={`projects-content-${newOffset}`}
+                offset={newOffset}
                 speed={0.5}
                 style={{
                     display: "flex",
@@ -110,16 +139,23 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                         width: "100%"
                     }}
                 >
-                    <Spaceship width={windowWidth > 600 ? "24rem" : "12rem"} />
-                    <div className={styles.cardsContainer}>
-                        <ProjectCard
-                            title="Test Title"
-                            subtitle="This is a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long test subtitle."
-                            imageUrl="https://via.placeholder.com/480"
-                        />
-                        <ProjectCard />
-                        <ProjectCard />
-                        <ProjectCard />
+                    {windowWidth > 1200 && <Spaceship width="24rem" />}
+                    <div className={styles.projects}>
+                        <h1 className={styles.title}>Projects</h1>
+                        <div className={styles.cardsContainer}>
+                            <ProjectCard
+                                title="Test Title"
+                                subtitle="This is a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long test subtitle."
+                                imageUrl={
+                                    windowWidth > 600
+                                        ? "https://via.placeholder.com/480"
+                                        : undefined
+                                }
+                            />
+                            <ProjectCard />
+                            <ProjectCard />
+                            <ProjectCard />
+                        </div>
                     </div>
                 </div>
             </ParallaxLayer>
