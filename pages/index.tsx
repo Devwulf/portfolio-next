@@ -40,6 +40,10 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             >
                 <Hero windowWidth={windowWidth} />
                 <Projects windowWidth={windowWidth} offset={1} />
+                <About
+                    windowWidth={windowWidth}
+                    offset={windowWidth <= 1200 ? 3 : 2}
+                />
             </Parallax>
 
             {/*
