@@ -1,0 +1,149 @@
+.astronaut {
+    animation: astronaut 8s ease-in-out infinite alternate;
+    transform-origin: 120.6px 150.4px; /* - 141 114.4*/
+}
+
+@keyframes astronaut {
+    from {
+        transform: translateY(0px) rotateZ(2deg);
+    }
+
+    to {
+        transform: translateY(20px) rotateZ(-2deg);
+    }
+}
+
+.rightArmUpper {
+    animation: rightarmupper 5s ease-in-out infinite alternate;
+    transform-origin: 99.2px 101.2px; /* - 141 114.4*/
+}
+
+@keyframes rightarmupper {
+    from {
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(-26.3deg);
+    }
+}
+
+.rightForearm {
+    animation: rightforearm 5s 2s ease-in-out infinite alternate;
+    transform-origin: 70.1px 97.8px;
+}
+
+@keyframes rightforearm {
+    from {
+        transform: rotateZ(45.9deg);
+    }
+
+    to {
+        transform: rotateZ(0deg);
+    }
+}
+
+.rightLeg {
+    animation: rightleg 7s ease-in-out infinite alternate;
+    transform-origin: 113.6px 154.4px;
+}
+
+@keyframes rightleg {
+    from {
+        transform: rotateZ(-11.5deg);
+    }
+
+    to {
+        transform: rotateZ(1.4deg);
+    }
+}
+
+.rightFoot {
+    animation: rightfoot 7s -3s ease-in-out infinite alternate;
+    transform-origin: 60.1px 200.8px;
+}
+
+@keyframes rightfoot {
+    from {
+        transform: rotateZ(-7.5deg);
+    }
+
+    to {
+        transform: rotateZ(1.4deg);
+    }
+}
+
+.head {
+    animation: head 5s ease-in-out infinite alternate;
+    transform-origin: 125.6px 89px;
+}
+
+@keyframes head {
+    from {
+        transform: rotateZ(-8.5deg);
+    }
+
+    to {
+        transform: rotateZ(1.5deg);
+    }
+}
+
+.leftLeg {
+    animation: leftleg 7s -2s ease-in-out infinite alternate;
+    transform-origin: 155.6px 163.4px;
+}
+
+@keyframes leftleg {
+    from {
+        transform: rotateZ(-11.5deg);
+    }
+
+    to {
+        transform: rotateZ(1.4deg);
+    }
+}
+
+.leftFoot {
+    animation: leftfoot 7s -5s ease-in-out infinite alternate;
+    transform-origin: 102.1px 205.8px;
+}
+
+@keyframes leftfoot {
+    from {
+        transform: rotateZ(-7.5deg);
+    }
+
+    to {
+        transform: rotateZ(1.4deg);
+    }
+}
+
+.leftArm {
+    animation: leftarm 5s -1s ease-in-out infinite alternate;
+    transform-origin: 159.6px 105.4px;
+}
+
+@keyframes leftarm {
+    from {
+        transform: rotateZ(-11.5deg);
+    }
+
+    to {
+        transform: rotateZ(8.4deg);
+    }
+}
+
+.leftHand {
+    animation: lefthand 5s 1s ease-in-out infinite alternate;
+    transform-origin: 102.1px 205.8px;
+}
+
+@keyframes lefthand {
+    from {
+        transform: rotateZ(-7.5deg);
+    }
+
+    to {
+        transform: rotateZ(1.4deg);
+    }
+}
