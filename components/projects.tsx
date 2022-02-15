@@ -139,7 +139,6 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                         width: "100%"
                     }}
                 >
-                    {windowWidth > 1200 && <Spaceship width="24rem" />}
                     <div className={styles.projects}>
                         <h1 className={styles.title}>Projects</h1>
                         <div className={styles.cardsContainer}>
@@ -157,6 +156,7 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                             <ProjectCard />
                         </div>
                     </div>
+                    {windowWidth > 1200 && <Spaceship width="24rem" />}
                 </div>
             </ParallaxLayer>
         </>

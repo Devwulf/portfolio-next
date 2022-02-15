@@ -4,6 +4,7 @@ import ProjectCard from "./projectCard";
 import Spaceship from "./spaceship";
 import Star from "./star";
 import styles from "../styles/About.module.css";
+import Astronaut from "./astronaut";
 
 type AboutProps = {
     windowWidth: number;
@@ -99,6 +100,7 @@ export default function About(props: AboutProps): JSX.Element {
                 speed={0.5}
                 style={{
                     display: "flex",
+                    alignItems: "center",
                     justifyContent: "center",
                     paddingLeft: windowWidth > 600 ? "4rem" : "2rem",
                     paddingRight: windowWidth > 600 ? "4rem" : "0rem",
@@ -110,11 +112,14 @@ export default function About(props: AboutProps): JSX.Element {
                     style={{
                         position: "relative",
                         display: "flex",
+                        justifyContent: "center",
                         alignItems: "center",
                         maxWidth: "72rem",
-                        width: "100%"
+                        width: "100%",
+                        height: "80%"
                     }}
                 >
+                    <Astronaut height={windowWidth > 600 ? "66vh" : "12rem"} />
                     <div className={styles.about}>
                         <h1 className={styles.title}>About Me</h1>
                         <div className={styles.content}>
@@ -124,7 +129,11 @@ export default function About(props: AboutProps): JSX.Element {
                             />
                         </div>
                     </div>
-                    <Spaceship width={windowWidth > 600 ? "24rem" : "12rem"} />
+                    {/*
+                    <div className={styles.about2}>
+                        <h1 className={styles.title}>About Me</h1>
+                    </div>
+                    */}
                 </div>
             </ParallaxLayer>
         </>

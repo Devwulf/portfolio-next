@@ -32,7 +32,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             </Head>
 
             <Parallax
-                pages={4}
+                key={`parallax-${windowWidth <= 1200 ? "lean" : "normal"}`}
+                pages={windowWidth <= 1200 ? 5 : 4}
                 innerStyle={{
                     backgroundImage: "url(/starfield.png)",
                     backgroundAttachment: "scroll"
