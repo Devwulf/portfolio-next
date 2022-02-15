@@ -1,20 +1,11 @@
 .about {
     width: 100%;
-    height: 100%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-left: 2rem;
-}
-
-.about2 {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    top: 50%;
-    display: flex;
-    justify-content: center;
+    padding: 0 1rem;
 }
 
 .title {
@@ -26,12 +17,28 @@
 
 .content {
     width: 100%;
-    height: 50%;
+    height: 100%;
+    padding: 0 1rem;
+    color: #dddddd;
+    border-radius: 1rem;
+}
+
+@media (min-width: 600px) {
+    .about {
+        height: 50%;
+        padding: 0 2rem;
+    }
+
+    .content {
+        background-color: #13172cd3;
+        padding: 1rem 2rem;
+    }
 }
 
 @media (min-width: 1200px) {
     .about {
-        padding-left: 6rem;
+        height: 100%;
+        padding: 0 6rem;
     }
 
     .content {

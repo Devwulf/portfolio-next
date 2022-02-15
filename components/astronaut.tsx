@@ -14,7 +14,7 @@ export default function Astronaut(props: AstronautProps): JSX.Element {
             style={{
                 height
             }}
-            viewBox="-10 -10 186 251"
+            viewBox="-10 -10 196 271"
         >
             <g className={styles.astronaut}>
                 <g name="right-arm" className={styles.rightArmUpper}>

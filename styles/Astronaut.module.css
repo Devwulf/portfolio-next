@@ -5,11 +5,11 @@
 
 @keyframes astronaut {
     from {
-        transform: translateY(0px) rotateZ(2deg);
+        transform: translateY(-10px) rotateZ(2deg);
     }
 
     to {
-        transform: translateY(20px) rotateZ(-2deg);
+        transform: translateY(10px) rotateZ(-2deg);
     }
 }
 

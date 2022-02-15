@@ -102,8 +102,8 @@ export default function About(props: AboutProps): JSX.Element {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    paddingLeft: windowWidth > 600 ? "4rem" : "2rem",
-                    paddingRight: windowWidth > 600 ? "4rem" : "0rem",
+                    paddingLeft: windowWidth > 800 ? "4rem" : "0rem",
+                    paddingRight: windowWidth > 800 ? "4rem" : "0rem",
                     pointerEvents: "none"
                 }}
             >
@@ -112,21 +112,30 @@ export default function About(props: AboutProps): JSX.Element {
                     style={{
                         position: "relative",
                         display: "flex",
+                        flexDirection: windowWidth > 800 ? "row" : "column",
                         justifyContent: "center",
                         alignItems: "center",
                         maxWidth: "72rem",
                         width: "100%",
-                        height: "80%"
+                        height: "100%"
                     }}
                 >
-                    <Astronaut height={windowWidth > 600 ? "66vh" : "12rem"} />
+                    <Astronaut height={windowWidth > 800 ? "66vh" : "40vh"} />
                     <div className={styles.about}>
                         <h1 className={styles.title}>About Me</h1>
                         <div className={styles.content}>
-                            <ProjectCard
-                                title="Test Title"
-                                subtitle="This is a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long test subtitle."
-                            />
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut
+                                enim ad minim veniam, quis nostrud exercitation
+                                ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in
+                                reprehenderit in voluptate velit esse cillum
+                                dolore eu fugiat nulla pariatur. Excepteur sint
+                                occaecat cupidatat non proident, sunt in culpa
+                                qui officia deserunt mollit anim id est laborum.
+                            </p>
                         </div>
                     </div>
                     {/*

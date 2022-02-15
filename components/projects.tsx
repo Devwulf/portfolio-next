@@ -124,7 +124,7 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                 style={{
                     display: "flex",
                     justifyContent: "center",
-                    paddingLeft: windowWidth > 600 ? "4rem" : "0rem",
+                    paddingLeft: windowWidth > 600 ? "4rem" : "2rem",
                     paddingRight: windowWidth > 600 ? "4rem" : "2rem",
                     pointerEvents: "none"
                 }}
