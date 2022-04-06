@@ -1,0 +1,13 @@
+.satellite {
+    animation: satellite 5s ease-in-out infinite alternate;
+}
+
+@keyframes satellite {
+    0% {
+        transform: translate(20px, -80px);
+    }
+
+    100% {
+        transform: translate(-20px, 80px);
+    }
+}

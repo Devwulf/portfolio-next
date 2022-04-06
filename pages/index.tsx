@@ -7,6 +7,8 @@ import Hero from "../components/hero";
 import { useEffect, useState } from "react";
 import Projects from "../components/projects";
 import About from "../components/about";
+import Contact from "../components/contact";
+import Image from "next/image";
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     props
@@ -45,6 +47,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                     windowWidth={windowWidth}
                     offset={windowWidth <= 1200 ? 3 : 2}
                 />
+                <Contact windowWidth={windowWidth}
+                    offset={windowWidth <= 1200 ? 4 : 3} />
             </Parallax>
 
             {/*
@@ -100,25 +104,6 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             </main>
             */}
 
-            {/*
-            <footer className={styles.footer}>
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Powered by{" "}
-                    <span className={styles.logo}>
-                        <Image
-                            src="/vercel.svg"
-                            alt="Vercel Logo"
-                            width={72}
-                            height={16}
-                        />
-                    </span>
-                </a>
-            </footer>
-            */}
         </div>
     );
 };

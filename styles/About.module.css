@@ -11,7 +11,7 @@
 .title {
     color: #ffffff;
     font-size: calc(24px + 1vw);
-    text-shadow: rgb(0 0 0 / 90%) 0px 2px 15px;
+    text-shadow: rgb(255 255 255 / 30%) 0px 2px 15px;
     margin-bottom: calc(12px + 3vh);
 }
 

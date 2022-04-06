@@ -1,7 +1,5 @@
 import { ParallaxLayer } from "@react-spring/parallax";
 import { BobSmall, BobMedium, BobLarge } from "./bob";
-import ProjectCard from "./projectCard";
-import Spaceship from "./spaceship";
 import Star from "./star";
 import styles from "../styles/About.module.css";
 import Astronaut from "./astronaut";
