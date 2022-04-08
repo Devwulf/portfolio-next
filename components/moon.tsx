@@ -11,7 +11,6 @@ type MoonProps = {
 
 export default function Moon(props: MoonProps): JSX.Element {
     const { top = "32rem", width = "15rem", shade, windowWidth } = props;
-    console.log(windowWidth);
     const spring = useSpring({
         loop: true,
         from:

@@ -4,15 +4,18 @@ import ProjectCard from "./projectCard";
 import Spaceship from "./spaceship";
 import Star from "./star";
 import styles from "../styles/Projects.module.css";
+import { Project } from "../types/Project";
 
 type ProjectsProps = {
     windowWidth: number;
     offset: number;
+    projects: Project[];
 };
 
 export default function Projects(props: ProjectsProps): JSX.Element {
-    const { windowWidth, offset } = props;
+    const { windowWidth, offset, projects } = props;
     const newOffset = windowWidth <= 1200 ? offset + 1 : offset;
+    const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
     return (
         <>
             <ParallaxLayer
@@ -142,18 +145,23 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                     <div className={styles.projects}>
                         <h1 className={styles.title}>Projects</h1>
                         <div className={styles.cardsContainer}>
-                            <ProjectCard
-                                title="Test Title"
-                                subtitle="This is a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long test subtitle."
-                                imageUrl={
-                                    windowWidth > 600
-                                        ? "https://via.placeholder.com/480"
-                                        : undefined
-                                }
-                            />
-                            <ProjectCard />
-                            <ProjectCard />
-                            <ProjectCard />
+                            {projects.map(project => {
+                                const imageUrl = project.attributes.Image?.data.attributes.url;
+                                const validImageUrl = imageUrl != null && apiUrl != null ? `${apiUrl}${imageUrl}` : undefined;
+
+                                const iconUrl = project.attributes.Icon.data.attributes.url;
+                                const validIconUrl = iconUrl != null && apiUrl != null ? `${apiUrl}${iconUrl}` : undefined;
+                                return (
+                                    <ProjectCard
+                                        key={project.id}
+                                        title={project.attributes.Title}
+                                        subtitle={project.attributes.Description}
+                                        projectUrl={project.attributes.Link}
+                                        imageUrl={validImageUrl}
+                                        iconUrl={validIconUrl}
+                                    />
+                                );
+                            })}
                         </div>
                     </div>
                     {windowWidth > 1200 && <Spaceship width="24rem" />}

@@ -9,11 +9,13 @@ import Projects from "../components/projects";
 import About from "../components/about";
 import Contact from "../components/contact";
 import Image from "next/image";
+import { Post } from "../types/Post";
+import { Project } from "../types/Project";
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     props
 ) => {
-    const { posts } = props;
+    const { posts, projects } = props;
     const [windowWidth, setWindowWidth] = useState(0);
 
     useEffect(() => {
@@ -42,7 +44,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                 }}
             >
                 <Hero windowWidth={windowWidth} />
-                <Projects windowWidth={windowWidth} offset={1} />
+                <Projects windowWidth={windowWidth} offset={1} projects={projects} />
                 <About
                     windowWidth={windowWidth}
                     offset={windowWidth <= 1200 ? 3 : 2}
@@ -108,38 +110,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     );
 };
 
-export default Home;
-
-type Author = {
-    data: {
-        id: number;
-        attributes: {
-            username: string;
-            email: string;
-            provider: string;
-            comfirmed: boolean;
-            blocked: boolean;
-            createdAt: Date;
-            updatedAt: Date;
-        };
-    };
-};
-
-type Post = {
-    id: number;
-    attributes: {
-        title: string;
-        slug: string;
-        content: string;
-        createdAt: Date;
-        updatedAt: Date;
-        publishedAt: Date;
-        author: Author;
-    };
-};
-
 export const getStaticProps: GetStaticProps<{
     posts: Post[];
+    projects: Project[];
 }> = async (context) => {
     const query = qs.stringify(
         {
@@ -149,13 +122,39 @@ export const getStaticProps: GetStaticProps<{
             encodeValuesOnly: true
         }
     );
-    const res = await fetch("http://localhost:1337/api/posts");
+
+    const apiKey = process.env.STRAPI_API;
+    const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+    if (apiKey == null || apiUrl == null)
+        return {
+            props: {
+                posts: [],
+                projects: []
+            }
+        };
+
+    const requestInit = {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${apiKey}`,
+            "Content-Type": "application/json"
+        }
+    };
+
+    const res = await fetch(`${apiUrl}/api/posts`);
     const json = await res.json();
     const posts: Post[] = json["data"] ?? [];
 
+    const res2 = await fetch(`${apiUrl}/api/projects?populate=*`);
+    const json2 = await res2.json();
+    const projects: Project[] = json2["data"] ?? [];
+
     return {
         props: {
-            posts
+            posts,
+            projects
         }
     };
 };
+
+export default Home;
