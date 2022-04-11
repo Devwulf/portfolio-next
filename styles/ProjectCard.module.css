@@ -8,7 +8,7 @@
     background-color: #dddddd;
     border-radius: 4rem;
     pointer-events: auto;
-    transition: 150ms;
+    transition: 200ms;
 }
 
 .name {
@@ -47,6 +47,7 @@
 
 .container:hover {
     cursor: pointer;
+    box-shadow: 0 0 25px -5px rgb(255 255 255 / 0.5);
 }
 
 .container:focus {
