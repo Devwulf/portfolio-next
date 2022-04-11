@@ -13,8 +13,8 @@ export default function About(props: AboutProps): JSX.Element {
     const { windowWidth, offset } = props;
     return (
         <>
+            
             <ParallaxLayer
-                key={`about-star1-${offset}`}
                 offset={offset}
                 speed={0.1}
                 style={{
@@ -25,22 +25,29 @@ export default function About(props: AboutProps): JSX.Element {
                 <BobSmall>
                     <Star
                         windowWidth={windowWidth}
-                        top="12%"
-                        left="60%"
+                        cullUnderWindowWidth={600}
+                        top="24%"
+                        left="28%"
                         width="5rem"
                         color="#f58464"
                     />
                     <Star
                         windowWidth={windowWidth}
-                        top="74%"
-                        left="28%"
+                        top="12%"
+                        left="60%"
                         width="6rem"
                         color="#ad2109"
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        top="66%"
+                        left="47%"
+                        width="5rem"
+                        color="#f58464"
                     />
                 </BobSmall>
             </ParallaxLayer>
             <ParallaxLayer
-                key={`about-star2-${offset}`}
                 offset={offset}
                 speed={0.2}
                 style={{
@@ -58,6 +65,21 @@ export default function About(props: AboutProps): JSX.Element {
                     <Star
                         windowWidth={windowWidth}
                         cullUnderWindowWidth={600}
+                        top="6%"
+                        left="80%"
+                        width="4rem"
+                        color="#ebbb2a"
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
+                        top="85%"
+                        left="22%"
+                        width="4rem"
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
                         top="76%"
                         left="90%"
                         width="4rem"
@@ -66,7 +88,6 @@ export default function About(props: AboutProps): JSX.Element {
                 </BobMedium>
             </ParallaxLayer>
             <ParallaxLayer
-                key={`about-star3-${offset}`}
                 offset={offset}
                 speed={0.3}
                 style={{
@@ -78,15 +99,30 @@ export default function About(props: AboutProps): JSX.Element {
                     <Star
                         windowWidth={windowWidth}
                         cullUnderWindowWidth={600}
-                        top="85%"
-                        left="65%"
+                        top="34%"
+                        left="10%"
                         width="3rem"
                         color="#71c7b6"
                     />
                     <Star
                         windowWidth={windowWidth}
-                        top="34%"
-                        left="10%"
+                        top="30%"
+                        left="50%"
+                        width="2rem"
+                        color="#c7f0ff"
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        top="74%"
+                        left="6%"
+                        width="3rem"
+                        color="#71c7b6"
+                    />
+                    <Star
+                        windowWidth={windowWidth}
+                        cullUnderWindowWidth={600}
+                        top="80%"
+                        left="85%"
                         width="2rem"
                         color="#c7f0ff"
                     />
