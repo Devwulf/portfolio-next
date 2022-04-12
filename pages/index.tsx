@@ -11,6 +11,8 @@ import Contact from "../components/contact";
 import Image from "next/image";
 import { Post } from "../types/Post";
 import { Project } from "../types/Project";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     props
@@ -44,15 +46,28 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                 }}
             >
                 <Hero windowWidth={windowWidth} />
-                <Projects windowWidth={windowWidth} offset={1} projects={projects} />
+                <Projects
+                    windowWidth={windowWidth}
+                    offset={1}
+                    projects={projects}
+                />
                 <About
                     windowWidth={windowWidth}
                     offset={windowWidth <= 1200 ? 3 : 2}
                 />
-                <Contact windowWidth={windowWidth}
-                    offset={windowWidth <= 1200 ? 4 : 3} />
+                <Contact
+                    windowWidth={windowWidth}
+                    offset={windowWidth <= 1200 ? 4 : 3}
+                />
             </Parallax>
 
+            <div
+                style={{
+                    position: "absolute"
+                }}
+            >
+                <ToastContainer />
+            </div>
             {/*
             <main className={styles.main}>
                 <h1 className={styles.title}>
@@ -105,7 +120,6 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                 </div>
             </main>
             */}
-
         </div>
     );
 };
@@ -136,7 +150,7 @@ export const getStaticProps: GetStaticProps<{
     const requestInit = {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${apiKey}`,
+            Authorization: `Bearer ${apiKey}`,
             "Content-Type": "application/json"
         }
     };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { HTMLInputTypeAttribute, useState } from "react";
 
 const unfocusInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") event.currentTarget.blur();
@@ -6,6 +6,7 @@ const unfocusInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
 
 type TextFieldProps = {
     name?: string;
+    type?: HTMLInputTypeAttribute;
     updateEveryChange?: boolean;
     autoFocus?: boolean;
     value: string;
@@ -13,7 +14,7 @@ type TextFieldProps = {
 };
 
 export function TextField(props: TextFieldProps): JSX.Element {
-    const { name, updateEveryChange = false, autoFocus, value, onChange } = props;
+    const { name, type = "text", updateEveryChange = false, autoFocus, value, onChange } = props;
     const [currentValue, setCurrentValue] = useState<string | undefined>();
 
     const onSubmit = async () => {
@@ -42,7 +43,7 @@ export function TextField(props: TextFieldProps): JSX.Element {
                 </div>
             )}
             <input
-                type="text"
+                type={type}
                 name=""
                 id=""
                 style={{

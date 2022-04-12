@@ -5,8 +5,9 @@ import styles from "../styles/Contact.module.css";
 import Satellite from "./satellite";
 import Earth from "./earth";
 import { TextAreaField, TextField } from "./input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { animated, easings, useSpring, useSprings } from "react-spring";
+import { toast, ToastContainer, ToastOptions } from "react-toastify";
 
 type ContactProps = {
     windowWidth: number;
@@ -131,7 +132,7 @@ export default function Contact(props: ContactProps): JSX.Element {
                     pointerEvents: "none"
                 }}
             >
-                <Earth top={windowWidth > 800 ? "0%" : "-50%"} left={windowWidth > 800 ? "50%" : "-25%"} width="64rem"
+                <Earth top={windowWidth > 800 ? "0%" : "-50%"} left={windowWidth > 800 ? "50%" : "-45%"} width="64rem"
                     ping1R={earthPing1.r}
                     ping1O={earthPing1.opacity}
                     ping2R={earthPing2.r}
@@ -170,8 +171,33 @@ export default function Contact(props: ContactProps): JSX.Element {
                         <h1 className={styles.title}>Contact</h1>
                         
                         <form action="" className={styles.content}
-                            onSubmit={event => {
+                            onSubmit={async event => {
                                 event.preventDefault();
+                                
+                                const res = await fetch("/api/sendgrid", {
+                                    body: JSON.stringify({
+                                        name, email, message
+                                    }),
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    method: "POST"
+                                });
+
+                                const { error } = await res.json();
+                                const toastSettings: ToastOptions<{}> = {
+                                    position: "bottom-center",
+                                    autoClose: 6000,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                };
+                                if (error)
+                                    toast.error("An error occured when sending your message. Sorry!", toastSettings);
+                                else
+                                    toast.success("Your message has been successfully sent. Hooray!", toastSettings);
                             }}>
                             <TextField 
                                 name="Name"
@@ -182,6 +208,7 @@ export default function Contact(props: ContactProps): JSX.Element {
                                 }} />
                             <TextField 
                                 name="Email"
+                                type="email"
                                 value={email} 
                                 onChange={async value => {
                                     setEmail(value);
