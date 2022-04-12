@@ -6,6 +6,7 @@ import Satellite from "./satellite";
 import Earth from "./earth";
 import { TextAreaField, TextField } from "./input";
 import { useState } from "react";
+import { animated, easings, useSpring, useSprings } from "react-spring";
 
 type ContactProps = {
     windowWidth: number;
@@ -17,6 +18,25 @@ export default function Contact(props: ContactProps): JSX.Element {
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [message, setMessage] = useState<string>("");
+    
+    const settings = {
+        from: {
+            r: 0, opacity: 0
+        },
+        config: {
+            duration: 2000,
+            easing: easings.easeInOutCubic
+        }
+    };
+
+    const satellitePingMain = useSpring(settings);
+    const satellitePing1 = useSpring(settings);
+    const satellitePing2 = useSpring(settings);
+
+    const earthPing1 = useSpring(settings);
+    const earthPing2 = useSpring(settings);
+    const earthPing3 = useSpring(settings);
+    const earthPing4 = useSpring(settings);
     return (
         <>
             <ParallaxLayer
@@ -111,7 +131,22 @@ export default function Contact(props: ContactProps): JSX.Element {
                     pointerEvents: "none"
                 }}
             >
-                <Earth top={windowWidth > 800 ? "0%" : "-50%"} left={windowWidth > 800 ? "50%" : "-25%"} width="64rem" />
+                <Earth top={windowWidth > 800 ? "0%" : "-50%"} left={windowWidth > 800 ? "50%" : "-25%"} width="64rem"
+                    ping1R={earthPing1.r}
+                    ping1O={earthPing1.opacity}
+                    ping2R={earthPing2.r}
+                    ping2O={earthPing2.opacity}
+                    ping3R={earthPing3.r}
+                    ping3O={earthPing3.opacity}
+                    ping4R={earthPing4.r}
+                    ping4O={earthPing4.opacity} />
+                <svg style={{
+                    position: "absolute",
+                    width: "100%",
+                    height: "100%",
+                    zIndex: -20
+                }}>
+                </svg>
             </ParallaxLayer>
             <ParallaxLayer
                 key={`contact-content-${offset}`}
@@ -127,20 +162,7 @@ export default function Contact(props: ContactProps): JSX.Element {
                     pointerEvents: "none"
                 }}
             >
-                <div
-                    className=""
-                    style={{
-                        position: "relative",
-                        display: "flex",
-                        flexDirection: windowWidth > 800 ? "row" : "column-reverse",
-                        justifyContent: windowWidth > 800 ? "start" : "end",
-                        alignItems: "center",
-                        maxWidth: "72rem",
-                        width: "100%",
-                        height: "100%",
-                        padding: "6rem 0"
-                    }}
-                >
+                <div className={styles.container}>
                     <div className={styles.contact}
                         style={{
                             marginTop: windowWidth > 800 ? undefined : "4rem"
@@ -174,13 +196,156 @@ export default function Contact(props: ContactProps): JSX.Element {
                                     return true;
                                 }} />
                             <button className={styles.submit}
-                                type="submit">
+                                type="submit"
+                                onClick={() => {
+                                    satellitePingMain.r.start({
+                                        from: 10,
+                                        to: 2000,
+                                        delay: 200,
+                                        reset: true,
+                                        onStart: () => {
+                                            satellitePingMain.opacity.start({
+                                                from: 1,
+                                                to: 0,
+                                                reset: true
+                                            });
+                                        }
+                                    });
+
+                                    satellitePing1.r.start({
+                                        from: 10,
+                                        to: 2000,
+                                        delay: 700,
+                                        reset: true,
+                                        onStart: () => {
+                                            satellitePing1.opacity.start({
+                                                from: 1,
+                                                to: 0,
+                                                delay: 200,
+                                                reset: true
+                                            });
+                                        }
+                                    });
+
+                                    satellitePing2.r.start({
+                                        from: 10,
+                                        to: 3000,
+                                        delay: 950,
+                                        reset: true,
+                                        onStart: () => {
+                                            satellitePing2.opacity.start({
+                                                from: 1,
+                                                to: 0,
+                                                delay: 200,
+                                                reset: true
+                                            });
+                                        }
+                                    });
+
+                                    
+                                    earthPing1.r.start({
+                                        from: 0,
+                                        to: 30,
+                                        delay: 1700,
+                                        reset: true,
+                                        onStart: () => {
+                                            earthPing1.opacity.start({
+                                                from: 1,
+                                                to: 0,
+                                                delay: 200,
+                                                reset: true
+                                            });
+                                        }
+                                    });
+
+                                    earthPing2.r.start({
+                                        from: 0,
+                                        to: 30,
+                                        delay: 2200,
+                                        reset: true,
+                                        onStart: () => {
+                                            earthPing2.opacity.start({
+                                                from: 1,
+                                                to: 0,
+                                                delay: 200,
+                                                reset: true
+                                            });
+                                        }
+                                    });
+
+                                    earthPing3.r.start({
+                                        from: 0,
+                                        to: 30,
+                                        delay: 2450,
+                                        reset: true,
+                                        onStart: () => {
+                                            earthPing3.opacity.start({
+                                                from: 1,
+                                                to: 0,
+                                                delay: 200,
+                                                reset: true
+                                            });
+                                        }
+                                    });
+
+                                    earthPing4.r.start({
+                                        from: 0,
+                                        to: 30,
+                                        delay: 2750,
+                                        reset: true,
+                                        onStart: () => {
+                                            earthPing4.opacity.start({
+                                                from: 1,
+                                                to: 0,
+                                                delay: 200,
+                                                reset: true
+                                            });
+                                        }
+                                    });
+                                }}>
                                 Transmit Message
                             </button>
                         </form>
                     </div>
-                    <Satellite width="32rem" />
                 </div>
+
+                <svg style={{
+                    position: "absolute",
+                    width: "100%",
+                    height: "100%",
+                    zIndex: -20
+                }}>
+                    <animated.circle
+                        cx={windowWidth > 800 ? "65%" : "50%"}
+                        cy={windowWidth > 800 ? "50%" : "33%"}
+                        r={satellitePingMain.r}
+                        opacity={satellitePingMain.opacity}
+                        stroke="#eeeeee"
+                        strokeWidth={10}
+                        fill="transparent" />
+
+                    <animated.circle
+                        cx={windowWidth > 800 ? "65%" : "50%"}
+                        cy={windowWidth > 800 ? "50%" : "33%"}
+                        r={satellitePing1.r}
+                        opacity={satellitePing1.opacity}
+                        stroke="#eeeeee"
+                        strokeWidth={10}
+                        fill="transparent" />
+
+                    <animated.circle
+                        cx={windowWidth > 800 ? "65%" : "50%"}
+                        cy={windowWidth > 800 ? "50%" : "33%"}
+                        r={satellitePing2.r}
+                        opacity={satellitePing2.opacity}
+                        stroke="#eeeeee"
+                        strokeWidth={10}
+                        fill="transparent" />
+                </svg>
+                <Satellite width="28rem" 
+                    top={windowWidth > 800 ? "50%" : "33%"}
+                    left={windowWidth > 800 ? "65%" : "50%"} />
+
                 {/*
                 <footer style={{
                     display: "flex",
