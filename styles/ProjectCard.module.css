@@ -14,6 +14,7 @@
 .name {
     color: #dddddd;
     transition: 150ms;
+    text-align: center;
 }
 
 .container:hover + .name {

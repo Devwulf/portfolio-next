@@ -5,6 +5,7 @@ import Spaceship from "./spaceship";
 import Star from "./star";
 import styles from "../styles/Projects.module.css";
 import { Project } from "../types/Project";
+import { useMemo } from "react";
 
 type ProjectsProps = {
     windowWidth: number;
@@ -16,6 +17,12 @@ export default function Projects(props: ProjectsProps): JSX.Element {
     const { windowWidth, offset, projects } = props;
     const newOffset = windowWidth <= 1200 ? offset + 1 : offset;
     const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+    const filteredProjects = useMemo(() => {
+        if (windowWidth >= 600)
+            return projects;
+
+        return projects.slice(0, 2);
+    }, [windowWidth, projects])
     return (
         <>
             <ParallaxLayer
@@ -145,7 +152,7 @@ export default function Projects(props: ProjectsProps): JSX.Element {
                     <div className={styles.projects}>
                         <h1 className={styles.title}>Projects</h1>
                         <div className={styles.cardsContainer}>
-                            {projects.map(project => {
+                            {filteredProjects.map(project => {
                                 const imageUrl = project.attributes.Image?.data.attributes.url;
                                 const validImageUrl = imageUrl != null && apiUrl != null ? `${apiUrl}${imageUrl}` : undefined;
 
