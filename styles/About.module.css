@@ -28,6 +28,16 @@
     font-size: 14pt;
 }
 
+.social {
+    font-size: 24pt;
+    transition: 150ms;
+}
+
+.social:hover {
+    cursor: pointer;
+    filter: drop-shadow(0 0 5px rgb(255 255 255 / 0.5));
+}
+
 @media (min-width: 600px) {
     .about {
         height: 50%;

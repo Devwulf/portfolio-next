@@ -7,6 +7,8 @@ import { AboutMe } from "../types/AboutMe";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import Link from "next/link";
+import { BsGithub, BsTwitch, BsTwitter } from "react-icons/bs";
 
 type AboutProps = {
     windowWidth: number;
@@ -174,6 +176,26 @@ export default function About(props: AboutProps): JSX.Element {
                             <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
                                 {aboutMe?.attributes.Content ?? placeholderContent}
                             </ReactMarkdown>
+                            <div style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                width: "100%",
+                                pointerEvents: "auto"
+                            }}>
+                                <div className={styles.social}
+                                    style={{
+                                        marginRight: "2rem"
+                                    }}>
+                                    <a href="https://github.com/Devwulf/" target="_blank" rel="noopener noreferrer">
+                                        <BsGithub />
+                                    </a>
+                                </div>
+                                <div className={styles.social}>
+                                    <a href="https://twitter.com/DevwulfCodes" target="_blank" rel="noopener noreferrer">
+                                        <BsTwitter />
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {/*

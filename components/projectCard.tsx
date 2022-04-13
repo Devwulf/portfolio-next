@@ -35,8 +35,10 @@ export default function ProjectCard(props: ProjectCardProps): JSX.Element {
                             objectFit="cover" />
                     </div>
                 )}
-                <div className={styles.innerContainer}
-                    onClick={() => router.push(projectUrl)}>
+                <a className={styles.innerContainer}
+                    href={projectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer">
                     {imageUrl && (
                         <div className={styles.image}>
                             <Image
@@ -67,7 +69,7 @@ export default function ProjectCard(props: ProjectCardProps): JSX.Element {
                         )}
                         {subtitle && <p>{subtitle}</p>}
                     </div>
-                </div>
+                </a>
             </div>
             <h2 className={styles.name}>{title}</h2>
         </div>
