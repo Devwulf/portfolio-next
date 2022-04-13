@@ -13,11 +13,13 @@ import { Post } from "../types/Post";
 import { Project } from "../types/Project";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AboutMe } from "../types/AboutMe";
+import { Hero as HeroType } from "../types/Hero";
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     props
 ) => {
-    const { posts, projects } = props;
+    const { projects, aboutMe, hero } = props;
     const [windowWidth, setWindowWidth] = useState(0);
 
     useEffect(() => {
@@ -45,7 +47,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                     backgroundAttachment: "scroll"
                 }}
             >
-                <Hero windowWidth={windowWidth} />
+                <Hero windowWidth={windowWidth}
+                    hero={hero} />
                 <Projects
                     windowWidth={windowWidth}
                     offset={1}
@@ -54,6 +57,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                 <About
                     windowWidth={windowWidth}
                     offset={windowWidth <= 1200 ? 3 : 2}
+                    aboutMe={aboutMe}
                 />
                 <Contact
                     windowWidth={windowWidth}
@@ -68,65 +72,14 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             >
                 <ToastContainer />
             </div>
-            {/*
-            <main className={styles.main}>
-                <h1 className={styles.title}>
-                    Welcome to <a href="https://nextjs.org">Next.js!</a>
-                </h1>
-
-                <p className={styles.description}>
-                    Get started by editing{" "}
-                    <code className={styles.code}>pages/index.tsx</code>
-                </p>
-
-                <div className={styles.grid}>
-                    <a href="https://nextjs.org/docs" className={styles.card}>
-                        <h2>Documentation &rarr;</h2>
-                        <p>
-                            Find in-depth information about Next.js features and
-                            API.
-                        </p>
-                    </a>
-
-                    <a href="https://nextjs.org/learn" className={styles.card}>
-                        <h2>Learn &rarr;</h2>
-                        <p>
-                            Learn about Next.js in an interactive course with
-                            quizzes!
-                        </p>
-                    </a>
-
-                    <a
-                        href="https://github.com/vercel/next.js/tree/canary/examples"
-                        className={styles.card}
-                    >
-                        <h2>Examples &rarr;</h2>
-                        <p>
-                            Discover and deploy boilerplate example Next.js
-                            projects.
-                        </p>
-                    </a>
-
-                    <a
-                        href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                        className={styles.card}
-                    >
-                        <h2>Deploy &rarr;</h2>
-                        <p>
-                            Instantly deploy your Next.js site to a public URL
-                            with Vercel.
-                        </p>
-                    </a>
-                </div>
-            </main>
-            */}
         </div>
     );
 };
 
 export const getStaticProps: GetStaticProps<{
-    posts: Post[];
     projects: Project[];
+    aboutMe?: AboutMe;
+    hero?: HeroType;
 }> = async (context) => {
     const query = qs.stringify(
         {
@@ -155,18 +108,23 @@ export const getStaticProps: GetStaticProps<{
         }
     };
 
-    const res = await fetch(`${apiUrl}/api/posts`);
-    const json = await res.json();
-    const posts: Post[] = json["data"] ?? [];
+    const projectsRes = await fetch(`${apiUrl}/api/portfolio-projects?populate=*`);
+    const projectsJson = await projectsRes.json();
+    const projects: Project[] = projectsJson["data"] ?? [];
 
-    const res2 = await fetch(`${apiUrl}/api/projects?populate=*`);
-    const json2 = await res2.json();
-    const projects: Project[] = json2["data"] ?? [];
+    const aboutMeRes = await fetch(`${apiUrl}/api/portfolio-about-me`);
+    const aboutMeJson = await aboutMeRes.json();
+    const aboutMe: AboutMe | undefined = aboutMeJson["data"] ?? undefined;
+
+    const heroRes = await fetch(`${apiUrl}/api/portfolio-hero`);
+    const heroJson = await heroRes.json();
+    const hero: HeroType | undefined = heroJson["data"] ?? undefined;
 
     return {
         props: {
-            posts,
-            projects
+            projects,
+            aboutMe,
+            hero
         }
     };
 };

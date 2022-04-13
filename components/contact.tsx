@@ -14,6 +14,16 @@ type ContactProps = {
     offset: number;
 };
 
+const toastSettings: ToastOptions<{}> = {
+    position: "bottom-center",
+    autoClose: 6000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+};
+
 export default function Contact(props: ContactProps): JSX.Element {
     const { windowWidth, offset } = props;
     const [name, setName] = useState<string>("");
@@ -46,7 +56,8 @@ export default function Contact(props: ContactProps): JSX.Element {
                 speed={0.1}
                 style={{
                     width: "100%",
-                    pointerEvents: "none"
+                    pointerEvents: "none",
+                    zIndex: -100
                 }}
             >
                 <BobSmall>
@@ -72,7 +83,8 @@ export default function Contact(props: ContactProps): JSX.Element {
                 speed={0.2}
                 style={{
                     width: "100%",
-                    pointerEvents: "none"
+                    pointerEvents: "none",
+                    zIndex: -100
                 }}
             >
                 <BobMedium>
@@ -98,7 +110,8 @@ export default function Contact(props: ContactProps): JSX.Element {
                 speed={0.3}
                 style={{
                     width: "100%",
-                    pointerEvents: "none"
+                    pointerEvents: "none",
+                    zIndex: -100
                 }}
             >
                 <BobLarge>
@@ -129,7 +142,8 @@ export default function Contact(props: ContactProps): JSX.Element {
                     justifyContent: "center",
                     paddingLeft: windowWidth > 800 ? "4rem" : "0rem",
                     paddingRight: windowWidth > 800 ? "4rem" : "0rem",
-                    pointerEvents: "none"
+                    pointerEvents: "none",
+                    zIndex: -10
                 }}
             >
                 <Earth top={windowWidth > 800 ? "0%" : "-50%"} left={windowWidth > 800 ? "50%" : "-45%"} width="64rem"
@@ -173,6 +187,11 @@ export default function Contact(props: ContactProps): JSX.Element {
                         <form action="" className={styles.content}
                             onSubmit={async event => {
                                 event.preventDefault();
+
+                                if (!name || !email || !message) {
+                                    toast.error("Please fill in the form before sending a message. Thank you!", toastSettings);
+                                    return;
+                                }
                                 
                                 const res = await fetch("/api/sendgrid", {
                                     body: JSON.stringify({
@@ -185,15 +204,6 @@ export default function Contact(props: ContactProps): JSX.Element {
                                 });
 
                                 const { error } = await res.json();
-                                const toastSettings: ToastOptions<{}> = {
-                                    position: "bottom-center",
-                                    autoClose: 6000,
-                                    hideProgressBar: false,
-                                    closeOnClick: true,
-                                    pauseOnHover: true,
-                                    draggable: true,
-                                    progress: undefined,
-                                };
                                 if (error)
                                     toast.error("An error occured when sending your message. Sorry!", toastSettings);
                                 else
@@ -372,31 +382,6 @@ export default function Contact(props: ContactProps): JSX.Element {
                 <Satellite width="28rem" 
                     top={windowWidth > 800 ? "50%" : "33%"}
                     left={windowWidth > 800 ? "65%" : "50%"} />
-
-                {/*
-                <footer style={{
-                    display: "flex",
-                    width: "100%",
-                    height: "6rem",
-                    
-                }}>
-                    <a
-                        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Powered by{" "}
-                        <span className={styles.logo}>
-                            <Image
-                                src="/vercel.svg"
-                                alt="Vercel Logo"
-                                width={72}
-                                height={16}
-                            />
-                        </span>
-                    </a>
-                </footer>
-                */}
             </ParallaxLayer>
         </>
     );

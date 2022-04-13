@@ -17,10 +17,15 @@
 
 .content {
     width: 100%;
-    height: 100%;
-    padding: 0 1rem;
+    padding: 1rem 2rem;
+    font-size: 12pt;
+    background-color: #13172cd3;
     color: #dddddd;
     border-radius: 1rem;
+}
+
+.content h2 {
+    font-size: 14pt;
 }
 
 @media (min-width: 600px) {
@@ -30,8 +35,36 @@
     }
 
     .content {
-        background-color: #13172cd3;
-        padding: 1rem 2rem;
+        font-size: 13pt;
+        padding: 2rem 4rem;
+    }
+
+    .content h2 {
+        font-size: 16pt;
+    }
+
+    .content p {
+        line-height: 24pt;
+    }
+}
+
+@media (min-width: 800px) {
+    .about {
+        height: 50%;
+        padding: 0 2rem;
+    }
+
+    .content {
+        font-size: 14pt;
+        padding: 2rem 4rem;
+    }
+
+    .content h2 {
+        font-size: 22pt;
+    }
+
+    .content p {
+        line-height: 24pt;
     }
 }
 
@@ -43,6 +76,5 @@
 
     .content {
         width: 100%;
-        height: 60%;
     }
 }

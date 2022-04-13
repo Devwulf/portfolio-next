@@ -5,13 +5,15 @@ import Earth from "./earth";
 import Moon from "./moon";
 import Star from "./star";
 import { BobLarge, BobMedium, BobSmall } from "./bob";
+import { Hero as HeroType } from "../types/Hero";
 
 type HeroProps = {
     windowWidth: number;
+    hero?: HeroType;
 };
 
 export default function Hero(props: HeroProps): JSX.Element {
-    const { windowWidth } = props;
+    const { windowWidth, hero } = props;
     return (
         <>
             <ParallaxLayer
@@ -175,11 +177,8 @@ export default function Hero(props: HeroProps): JSX.Element {
                         width: "100%"
                     }}
                 >
-                    <h1 className={styles.title}>Hi. I'm Mark Malabanan.</h1>
-                    <p className={styles.subtitle}>
-                        I'm a full-stack developer skilled in React, Asp.NET
-                        Core, Python.
-                    </p>
+                    <h1 className={styles.title}>{hero?.attributes.Title ?? "Hi. I'm Mark Malabanan."}</h1>
+                    <p className={styles.subtitle}>{hero?.attributes.Subtitle ?? "I'm a React front-end developer!"}</p>
                 </div>
             </ParallaxLayer>
             <ParallaxLayer

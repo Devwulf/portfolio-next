@@ -3,14 +3,27 @@ import { BobSmall, BobMedium, BobLarge } from "./bob";
 import Star from "./star";
 import styles from "../styles/About.module.css";
 import Astronaut from "./astronaut";
+import { AboutMe } from "../types/AboutMe";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 
 type AboutProps = {
     windowWidth: number;
     offset: number;
+    aboutMe?: AboutMe;
 };
 
+const placeholderContent = `I'm passionate about finding solutions to problems and 
+    turning those solutions into elegantly written and organized code. 
+    I'm always on the lookout for improvements in the code, always pushing 
+    myself to grow and learn new things. Besides coding, I've recently 
+    been enjoying statistics, working with Big Data, and machine learning. 
+    I'm currently working on a web application with Balancy, creating a tool 
+    for game developers to better balance their games.`;
+
 export default function About(props: AboutProps): JSX.Element {
-    const { windowWidth, offset } = props;
+    const { windowWidth, offset, aboutMe } = props;
     return (
         <>
             
@@ -136,8 +149,8 @@ export default function About(props: AboutProps): JSX.Element {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    paddingLeft: windowWidth > 800 ? "4rem" : "0rem",
-                    paddingRight: windowWidth > 800 ? "4rem" : "0rem",
+                    paddingLeft: windowWidth > 1000 ? "4rem" : "0rem",
+                    paddingRight: windowWidth > 1000 ? "4rem" : "0rem",
                     pointerEvents: "none"
                 }}
             >
@@ -146,7 +159,7 @@ export default function About(props: AboutProps): JSX.Element {
                     style={{
                         position: "relative",
                         display: "flex",
-                        flexDirection: windowWidth > 800 ? "row" : "column",
+                        flexDirection: windowWidth > 1000 ? "row" : "column",
                         justifyContent: "center",
                         alignItems: "center",
                         maxWidth: "72rem",
@@ -154,22 +167,13 @@ export default function About(props: AboutProps): JSX.Element {
                         height: "100%"
                     }}
                 >
-                    <Astronaut height={windowWidth > 800 ? "66vh" : "40vh"} />
+                    <Astronaut height={windowWidth > 1000 ? "66vh" : "40vh"} />
                     <div className={styles.about}>
                         <h1 className={styles.title}>About Me</h1>
                         <div className={styles.content}>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint
-                                occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.
-                            </p>
+                            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
+                                {aboutMe?.attributes.Content ?? placeholderContent}
+                            </ReactMarkdown>
                         </div>
                     </div>
                     {/*
