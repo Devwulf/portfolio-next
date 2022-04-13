@@ -108,7 +108,7 @@ export const getServerSideProps: GetServerSideProps<{
         }
     };
 
-    const projectsRes = await fetch(`${apiUrl}/api/portfolio-projects?populate=*`);
+    const projectsRes = await fetch(`${apiUrl}/api/portfolio-projects?populate=*&sort=id`);
     const projectsJson = await projectsRes.json();
     const projects: Project[] = projectsJson["data"] ?? [];
 
