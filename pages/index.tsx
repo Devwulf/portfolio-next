@@ -1,4 +1,4 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, InferGetServerSidePropsType, InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import qs from "qs";
@@ -16,7 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AboutMe } from "../types/AboutMe";
 import { Hero as HeroType } from "../types/Hero";
 
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
+const Home: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (
     props
 ) => {
     const { projects, aboutMe, hero } = props;
@@ -76,7 +76,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     );
 };
 
-export const getStaticProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
     projects: Project[];
     aboutMe?: AboutMe;
     hero?: HeroType;
